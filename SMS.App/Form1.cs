@@ -20,7 +20,7 @@ namespace SMS.App
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            createStudent(1, "Johnny Test", "johnnytest@yahoo.com");
+            //createStudent(1, "Johnny Test", "johnnytest@yahoo.com");
         }
 
 
@@ -34,12 +34,17 @@ namespace SMS.App
             {
                 StudentId = id,
                 StudentName = name,
-                Email = email
+                Email = email,
+                DateAdded = DateTime.Now,
+                AddedBy = "Admin"
             };
 
             textBoxStudentId.Text = student.StudentId.ToString();
             textBoxName.Text = student.StudentName;
             textBoxEmail.Text = student.Email;
+
+            //labelAddedInformation.Text = "Added by: " + student.AddedBy + " " + student.DateAdded;  //Must avoid this
+            labelAddedInformation.Text = $"Added by: {student.AddedBy} {student.DateAdded}";
 
         }
     }
