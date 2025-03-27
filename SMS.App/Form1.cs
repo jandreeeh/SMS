@@ -22,9 +22,10 @@ namespace SMS.App
         private void Form1_Load(object sender, EventArgs e)
         {
            using (var dbContext = new AppDbContext())
-            {
-                var program = dbContext.Programs.FirstOrDefault();
-            }
+           {
+                var program = dbContext.Programs.Where(p => p.ProgramName == "CHE").FirstOrDefault();
+                createStudent(program.ProgramId, program.ProgramName, program.Description);
+           }
         }
 
 
