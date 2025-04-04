@@ -16,7 +16,29 @@ namespace SMS.App
         public ProgramView()
         {
             InitializeComponent();
+
+            buttonCreate.Click += delegate
+            {
+                CreateEvent?.Invoke(this, EventArgs.Empty);
+            };
+            buttonRead.Click += delegate
+            {
+                ReadEvent?.Invoke(this, EventArgs.Empty);
+            };
+            buttonUpdate.Click += delegate
+            {
+                UpdateEvent?.Invoke(this, EventArgs.Empty);
+            };
+            buttonDelete.Click += delegate
+            {
+                DeleteEvent?.Invoke(this, EventArgs.Empty);
+            };
         }
+
+        public event EventHandler CreateEvent;
+        public event EventHandler ReadEvent;
+        public event EventHandler UpdateEvent;
+        public event EventHandler DeleteEvent;
 
         public int ProgramId { get => short.Parse(textBoxId.Text); set => textBoxId.Text = value.ToString(); }
         public string ProgramName { get => textBoxProgramName.Text.Trim(); set => textBoxProgramName.Text = value; }
@@ -26,5 +48,6 @@ namespace SMS.App
         {
             dataGridViewProgramList.DataSource = bindingSource;
         }
+
     }
 }
